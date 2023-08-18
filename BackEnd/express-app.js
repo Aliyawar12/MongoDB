@@ -3,7 +3,7 @@ const connectDB = require("./config/connectDB");
 const express = require("express");
 const mongoose = require('mongoose');
 const taskRoutes = require('./Routes/taskRoutes')
-const userRoute = require('./Routes/userRoute')
+const userRoutes = require('./Routes/userRoute')
 const User = require('./Models/Users');
 const app = express();
 
@@ -24,5 +24,6 @@ app.listen(PORT, () => {
 app.use(express.json());
 
 app.use('/tasks', taskRoutes);
-app.use('/users', userRoute);
-app.use('/Users', userRoute);
+app.use('/userspost', userRoutes);
+app.use('/users', userRoutes);
+app.use('/login', userRoutes);
