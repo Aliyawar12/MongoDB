@@ -5,23 +5,22 @@ exports.createUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10); // Use the appropriate number of rounds
+    const hashedPassword = await bcrypt.hash(password, 10); 
 
-    // Create a new user instance
+  
     const newUser = new User({
       name: name,
       email: email,
-      password: hashedPassword, // Store the hashed password
+      password: hashedPassword, 
     });
 
-    // Save the user to the database
+    
     const savedUser = await newUser.save();
 
-    // Return the saved user in the response
+    
     res.status(201).json(savedUser);
   } catch (error) {
-    // Handle error
+    
     console.error(error);
     res.status(500).json({ message: 'Failed to create user / Email Already Registered' });
   }
