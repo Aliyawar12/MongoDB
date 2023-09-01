@@ -27,5 +27,4 @@ app.use(express.json());
 app.use('/tasks', taskRoutes);
 app.use('/', userRoutes);
 
-app.use('/', userRoutes);
-//app.use('/taskuser', taskuserRoutes);
+app.use('/', userRoutes); 

@@ -8,7 +8,6 @@ exports.createTask = async (req, res) => {
       name: req.body.name,
       city: req.body.city,
       age: req.body.age,
-      // You can set other fields here
     });
 
     const savedTask = await newTask.save();
@@ -18,7 +17,6 @@ exports.createTask = async (req, res) => {
   }
 };
 
-// Get all tasks
 exports.getTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -28,7 +26,6 @@ exports.getTasks = async (req, res) => {
   }
 };
 
-// Update a task
 exports.updateTask = async (req, res) => {
   try {
     const updatedTask = await Task.findByIdAndUpdate(
@@ -42,7 +39,6 @@ exports.updateTask = async (req, res) => {
   }
 };
 
-// Delete a task
 exports.deleteTask = async (req, res) => {
   try {
     await Task.findByIdAndDelete(req.params.id);
