@@ -1,10 +1,10 @@
 
-const Task = require('../Models/TaskUser.js');
+const TaskUser = require('../Models/TaskUser.js');
 
 
 exports.createTaskUser = async (req, res) => {
     try {
-      const newTask = new TaskUser({
+      const newTaskUser = new TaskUser({
         task_id: req.body.task_id,
         user_id: req.body.user_id,
         assigned_date: req.body.assigned_date
