@@ -5,13 +5,12 @@ const mongoose = require('mongoose');
 const taskRoutes = require('./Routes/taskRoutes')
 const userRoutes = require('./Routes/userRoute')
 const taskuserRoutes = require('./Routes/TaskUser')
-const User = require('./Models/Users');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
  
 connectDB();
-//Route
+
 app.get("/" , (req, res) =>{
     res.send("Home Page");
 });

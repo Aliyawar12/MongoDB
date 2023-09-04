@@ -10,8 +10,7 @@ const connectDB = async () => {
     }
 };
  module.exports = connectDB;
-
-
+ 
     const userSchema = new mongoose.Schema({
         name: String,
         email: String,
