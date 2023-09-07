@@ -1,7 +1,6 @@
-// controllers/taskController.js
 const Task = require('../Models/Task.js');
 
-// Create a new task
+
 exports.createTask = async (req, res) => {
   try {
     const newTask = new Task({
