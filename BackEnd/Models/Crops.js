@@ -1,21 +1,28 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const cropsSchema = new mongoose.Schema({
-  name: { type: String, required: [true, "Please add a Name"] },
-  discription: { type: String, required: [true, "Please add a description"]},
-  price: { type: Number, required: [true, "Please add a Price"]},
-  quantity: { type: String, required: [true, "Please add a quantity"] },
-  location: { type: String, 
-    enum: {
-      values : ['Okara',  'Sahiwal', 'Pakpattan'],
-      message : `{location} no valid`,
+const ArticleSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: [true, "Please add a Title"],
+      maxlenght: 100,
     },
-    required: [true, "Please add a Location"] }
-}, 
-{ 
-  timestamps: true 
-});
+    Content: { type: String, required: [true, "Please add a Content"] },
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    tags: {
+      type: String,
+      enum: ["Crime", "Politics", "Sports", "Entertainment", "Bussiness"],
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const Crops = mongoose.model('Crops', cropsSchema);
+const Articles = mongoose.model("Article", ArticleSchema);
 
-module.exports = Crops;
+module.exports = Articles;
