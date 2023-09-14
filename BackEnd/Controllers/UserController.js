@@ -1,34 +1,30 @@
-const bcrypt = require('bcrypt');
-const User = require('../Models/Users');
+const bcrypt = require("bcrypt");
+const User = require("../Models/Users.js");
 
 exports.createUser = async (req, res) => {
   try {
-    const { name, email, role, password } = req.body;
+    const { name, email, password, avatar, bio, dateJoined, articles } =
+      req.body;
 
-    const hashedPassword = await bcrypt.hash(password, 10); 
+    const hashedPassword = await bcrypt.hash(password, 10);
 
-  
     const newUser = new User({
       name: name,
       email: email,
-      role: role,
-      password: hashedPassword, 
+      password: hashedPassword,
+      avatar: avatar,
+      bio: bio,
+      dateJoined: dateJoined,
+      articles: articles,
     });
 
-    
     const savedUser = await newUser.save();
 
-    
     res.status(201).json(savedUser);
   } catch (error) {
-    
     console.error(error);
-    res.status(500).json({ message: 'Failed to create user / Email Already Registered' });
+    res
+      .status(500)
+      .json({ message: "Failed to create user / Email Already Registered" });
   }
 };
-
-
-
-
-
-        
